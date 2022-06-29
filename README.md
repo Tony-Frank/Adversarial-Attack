@@ -79,14 +79,13 @@
 
 ###### 		2.1 sign 符号攻击方法
 
-​		公式（1）给出了FGSM的公式。其中，$x^{a d v}$为攻击结果，$x$为输入图像，$y$为$x$的标签，$\theta$是模型的权重，$J(\theta, x, y)$是模型的损失函数，$\nabla_{x}$是$x$的梯度符号算子，$\epsilon$为扰动强度。
+​		公式（1）给出了FGSM的公式。其中，$x^{a d v}$为攻击结果，$x$为输入图像，$y$为$x$的标签，$\theta$是模型的权重，$J(\theta, x, y)$是模型的损失函数，$\nabla_{x}$是$x$的梯度符号算子，$\epsilon$ 为扰动强度。
 $$
 x^{a d v}=x+\epsilon \cdot \operatorname{sign}\left(\nabla_{x} J(\theta, x, y)\right) \tag{1}
 $$
 ​		BIM的攻击方法通过迭代FGSM生成，如公式（3）所示。其中，攻击在样本$x$上更新了$T$次，每个小步长$α=ϵ/T$。夹子运算符表示输出的裁剪，将其约束在半径为 $\epsilon$ 的球中。内部公式由FGSM演变而来，因此显示出类似的形式。
 $$
 x_{0}^{a d v}=x \\
-
 \operatorname{Clip}_{x, \epsilon}\left(x^{a d v}\right)=\min \left(\max \left(x^{a d v}, x-\epsilon\right), x+\epsilon\right)\tag{2} \\
 $$
 
